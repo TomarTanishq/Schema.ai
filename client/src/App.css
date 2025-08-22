@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Eina";
+  src: url("./assets/fonts/Eina01-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Eina";
+  src: url("./assets/fonts/Eina01-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import "tailwindcss";
+
+.font-poppins {
+  font-family: 'Poppins';
+}
+
+@theme {
+  --font-eina: "Eina", sans-serif;
+}
