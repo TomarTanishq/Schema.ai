@@ -80,14 +80,14 @@ const Feature = () => {
                     {/* Consistent Data */}
                     <div className="mt-2">
                         <textarea
-                            className="w-full resize-none outline-0 text-sm border-3 border-[#1b1e2b] px-5 pt-2 font-poppins min-h-25"
-                            placeholder={`Provide Consistent Data \n\nexample: \ndoctor, doctorName,---`}
+                            className="w-full resize-none outline-0 text-xs border-3 border-[#1b1e2b] px-5 pt-2 font-poppins tracking-widest min-h-25"
+                            placeholder={`Provide Consistent Data(Optional) \n\nexample: \ndoctor, doctorName, createdAt`}
                             value={consistentData}
                             onChange={(e) => setConsistentData(e.target.value)}></textarea>
                     </div>
                     <button
                         onClick={handleGenerate}
-                        className="bg-blue-900 text-white p-2 mt-2 rounded-md cursor-pointer"
+                        className="border border-gray-800 text-white p-2 mt-2 rounded-sm cursor-pointer active:bg-[#1b1e2b]"
                         disabled={!schema || loading}
                     >
                         {loading ? "Generating..." : "Generate"}
@@ -108,7 +108,8 @@ const Feature = () => {
                     {/* TextArea */}
                     <div className="border-5 border-[#1b1e2b] min-h-169.5">
                         <textarea
-                            className="resize-none min-h-full w-full outline-0 p-5 font-mono text-green-200 text-sm tracking-widest"
+                            className="resize-none min-h-full w-full outline-0 p-5 font-mono text-green-200 text-sm tracking-widest caret-transparent"
+                            placeholder="Results will be displayed here"
                             readOnly
                             value={generatedData}
                         ></textarea>
