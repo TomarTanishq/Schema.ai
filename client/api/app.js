@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         ${consistentData && consistentData.length > 0 ? consistentData.map(field => `- "${field}"`).join('\n') : "No consistent fields specified."}
      b. **Variable Fields:** For all fields NOT listed above as consistent, generate unique and realistic values for each of the 20 datasets. Ensure variety and appropriateness to the field names.
   
-  3. Array Field Generation: For any array fields within the schema, generate exactly 20 entries within each array.
+  3. Array Field Generation: For any array fields within the schema, generate exactly 2 entries within each array.
   
   4. Data Formatting:
      - For date/time fields: 
