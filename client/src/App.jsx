@@ -2,6 +2,7 @@ import { Navbar } from "./components/Navbar/Navbar"
 import './App.css'
 import Hero from "./components/Hero/Hero"
 import Feature from "./components/Feature/Feature"
+import { Analytics } from "@vercel/analytics"
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <Hero />
       <Feature />
+      <Analytics />
     </div>
   )
 }
