@@ -50,7 +50,7 @@ const Review = () => {
                                     field="message"
                                     errors={state.errors}
                                 />
-                                <button type="submit" disabled={state.submitting} className='flex justify-start mt-5 outline outline-gray-500 max-w-fit px-2 py-2 rounded-md cursor-pointer active:bg-[#1b1e2b]'>
+                                <button type="submit" disabled={state.submitting} className='flex justify-start mt-5 outline outline-gray-500 max-w-fit px-2 py-2 rounded-md cursor-pointer active:bg-[#141724]'>
                                     Submit
                                 </button>
                             </div>
