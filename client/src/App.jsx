@@ -3,6 +3,7 @@ import './App.css'
 import Hero from "./components/Hero/Hero"
 import Feature from "./components/Feature/Feature"
 import { Analytics } from "@vercel/analytics/react"
+import Review from "./components/UserReview/Review"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <Hero />
       <Feature />
+      <Review />
       <Analytics />
     </div>
   )
