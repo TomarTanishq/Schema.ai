@@ -32,6 +32,7 @@ const Review = () => {
                                     type="text"
                                     name="name"
                                     value={name}
+                                    required
                                     onChange={(e) => setName(e.target.value)}
                                     className='mt-2 px-2 py-2 text-sm outline outline-gray-500 rounded-md'
                                 />
@@ -43,6 +44,7 @@ const Review = () => {
                                     name="review"
                                     value={review}
                                     onChange={(e) => setReview(e.target.value)}
+                                    required
                                     className='mt-2 px-2 py-2 text-sm outline outline-gray-500 rounded-md resize-none min-h-20'
                                 />
                                 <ValidationError
