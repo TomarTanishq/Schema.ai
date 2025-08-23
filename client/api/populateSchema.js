@@ -5,7 +5,7 @@ const openai = new OpenAI({
     baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
 });
 
-export async function populateSchemaStream(prompt, onData, onComplete, onError) {
+export async function populateSchema(prompt, onData, onComplete, onError) {
     try {
         const stream = await openai.chat.completions.create({
             model: "gemini-2.5-flash-lite",
@@ -23,38 +23,40 @@ export async function populateSchemaStream(prompt, onData, onComplete, onError) 
         });
 
         let isFirstChunk = true;
-        
+
         for await (const chunk of stream) {
             let delta = chunk.choices[0]?.delta?.content || "";
-            
+
             if (delta) {
                 // More aggressive cleaning for the first chunk
                 if (isFirstChunk) {
                     // Remove common prefixes that AI might add
                     delta = delta.replace(/^```json\s*/i, "")
-                                 .replace(/^```\s*/i, "")
-                                 .replace(/^json\s*/i, "")
-                                 .replace(/^here\s+is\s+the\s+json\s*/i, "")
-                                 .replace(/^here\s+is\s*/i, "")
-                                 .trim();
+                        .replace(/^```\s*/i, "")
+                        .replace(/^json\s*/i, "")
+                        .replace(/^here\s+is\s+the\s+json\s*/i, "")
+                        .replace(/^here\s+is\s*/i, "")
+                        .trim();
                     isFirstChunk = false;
                 }
-                
+
                 // Clean any remaining markdown or formatting
                 delta = delta.replace(/```json/g, "")
-                           .replace(/```/g, "")
-                           .replace(/^\s*json\s*$/gmi, ""); // More comprehensive json removal
-                
+                    .replace(/```/g, "")
+                    .replace(/^\s*json\s*$/gmi, ""); // More comprehensive json removal
+
                 // Only send non-empty chunks
                 if (delta.trim()) {
                     onData?.(delta);
                 }
             }
         }
-        
+
         onComplete?.();
     } catch (err) {
         onError?.(err);
         console.error("Streaming error:", err);
     }
 }
+
+export default populateSchema
