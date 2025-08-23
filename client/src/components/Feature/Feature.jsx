@@ -16,7 +16,7 @@ const Feature = () => {
             if (consistentData && consistentData.length > 0) {
                 consistentDataArray = consistentData.split(/[,]+/).map(f => f.trim()).filter(Boolean)
             }
-            const response = await fetch("/api/fillSchema", {
+            const response = await fetch("/api/app", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
