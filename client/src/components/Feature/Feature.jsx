@@ -72,7 +72,7 @@ const Feature = () => {
                         <div className="flex items-center gap-3">
                             <p className="font-poppins">Datasets:</p>
                             <select value={datasets} onChange={(e) => setDatasets(e.target.value)} className="font-poppins bg-[#1b1e2b]">
-                                <option value="25">25</option>
+                                <option value="25" selected>25</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
