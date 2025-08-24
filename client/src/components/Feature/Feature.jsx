@@ -3,7 +3,7 @@ import { useState } from "react";
 const Feature = () => {
     const [schema, setSchema] = useState("");
     const [generatedData, setGeneratedData] = useState("");
-    const [datasets, setDatasets] = useState("")
+    const [datasets, setDatasets] = useState("25")
     const [loading, setLoading] = useState(false);
     const [copiedText, setCopiedText] = useState(false)
     const [consistentData, setConsistentData] = useState("")
@@ -71,9 +71,8 @@ const Feature = () => {
                         </h2>
                         <div className="flex items-center gap-3">
                             <p className="font-poppins">Datasets:</p>
-                            <select value={datasets} onChange={(e) => setDatasets(e.target.value)} className="font-poppins bg-[#1b1e2b]" required>
-                                <option value="">Select a number</option>
-                                <option value="25" selected>25</option>
+                            <select value={datasets} onChange={(e) => setDatasets(e.target.value)} className="font-poppins bg-[#1b1e2b]">
+                                <option value="25">25</option>
                                 <option value="50">50</option>
                                 <option value="100">100</option>
                             </select>
