@@ -3,6 +3,7 @@ import { useState } from "react";
 const Feature = () => {
     const [schema, setSchema] = useState("");
     const [generatedData, setGeneratedData] = useState("");
+    const [datasets, setDatasets] = useState("")
     const [loading, setLoading] = useState(false);
     const [copiedText, setCopiedText] = useState(false)
     const [consistentData, setConsistentData] = useState("")
@@ -23,7 +24,8 @@ const Feature = () => {
                 },
                 body: JSON.stringify({
                     schema,
-                    consistentData: consistentDataArray
+                    consistentData: consistentDataArray,
+                    datasets
                 })
             });
 
@@ -63,10 +65,19 @@ const Feature = () => {
                 {/* Input */}
                 <div className="flex flex-col">
                     {/* Title */}
-                    <div className="bg-[#1b1e2b]">
+                    <div className="bg-[#1b1e2b] flex justify-between">
                         <h2 className="font-poppins p-2 text-gray-200 tracking-wider">
                             MongoDB Schema
                         </h2>
+                        <div className="flex items-center gap-3">
+                            <p className="font-poppins">Datasets:</p>
+                            <select value={datasets} onChange={(e) => setDatasets(e.target.value)} className="font-poppins bg-[#1b1e2b]">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+
                     </div>
                     {/* TextArea */}
                     <div className="border-5 border-[#1b1e2b] min-h-130">
