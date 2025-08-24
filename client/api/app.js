@@ -8,18 +8,18 @@ export default async function handler(req, res) {
     }
 
     try {
-        const { schema, consistentData } = req.body;
+        const { schema, consistentData, datasets } = req.body;
         const prompt = `
- Generate exactly 20 datasets as a JSON array of objects.
+ Generate exactly ${datasets} datasets as a JSON array of objects.
   
   STRICT REQUIREMENTS:
   1. Schema Adherence: Follow ONLY this exact schema structure - do not add any additional fields:
   ${schema}
   
   2. Data Consistency:
-     a. **Consistent Fields:** The following fields MUST have identical values across ALL 20 datasets:
+     a. **Consistent Fields:** The following fields MUST have identical values across ALL ${datasets} datasets:
         ${consistentData && consistentData.length > 0 ? consistentData.map(field => `- "${field}"`).join('\n') : "No consistent fields specified."}
-     b. **Variable Fields:** For all fields NOT listed above as consistent, generate unique and realistic values for each of the 20 datasets. Ensure variety and appropriateness to the field names.
+     b. **Variable Fields:** For all fields NOT listed above as consistent, generate unique and realistic values for each of the ${datasets} datasets. Ensure variety and appropriateness to the field names.
   
   3. Array Field Generation: For any array fields within the schema, generate exactly 2 entries within each array.
   
